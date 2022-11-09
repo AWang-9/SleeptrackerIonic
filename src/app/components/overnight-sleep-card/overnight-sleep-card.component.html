@@ -1,0 +1,25 @@
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>
+      <span item-left>
+        {{overnightData.sleepStart | date: "MM/dd/YYYY"}} - {{overnightData.sleepEnd | date: "MM/dd/YYYY"}}
+      </span>
+      <span item-right>
+        <ion-icon name="create-outline" style="float:right"></ion-icon>
+      </span>
+
+    </ion-card-subtitle>
+
+    <ion-card-title class = 'ion-text-center'>
+      {{overnightData.sleepStart | date: "hh:mm a"}}  – {{overnightData.sleepEnd | date: "hh:mm a"}}
+    </ion-card-title>
+    <ion-card-title class = 'ion-text-center'>
+      {{overnightData.summaryString()}} slept
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    {{overnightData.extraNotes}}
+  </ion-card-content>
+</ion-card>
+

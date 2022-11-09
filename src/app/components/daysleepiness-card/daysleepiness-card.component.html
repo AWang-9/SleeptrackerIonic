@@ -1,0 +1,29 @@
+<ion-card>
+  <ion-card-header>
+    
+    <ion-card-subtitle>
+      <span item-left>
+        {{sleepinessData.loggedAt | date: "MM/dd/YYYY"}}
+      </span>
+      <span item-right>
+        <ion-icon name="create-outline" style="float:right"></ion-icon>
+      </span>   
+    </ion-card-subtitle>
+    <ion-card-title class='ion-text-center'>
+      {{sleepinessData.loggedAt | date: "h:mm a"}}
+    </ion-card-title>
+    <ion-card-title class='ion-text-center'>
+      Tiredness level {{sleepinessData.loggedValue}}
+    </ion-card-title>
+    <ion-card-subtitle class='ion-text-center'>
+      {{StanfordScale[sleepinessData.loggedValue]}}
+    </ion-card-subtitle>
+    <ion-range min="1" max="7" step="1" snaps="true" disabled="true" pin="true" ticks="true" value = "{{sleepinessData.loggedValue}}">
+      <ion-label slot="start">1</ion-label>
+      <ion-label slot="end">7</ion-label>
+    </ion-range>
+  </ion-card-header>
+  <ion-card-content>
+    {{sleepinessData.extraNotes}}
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-title slot="start">Enter Info</ion-title>
+      <ion-button (click)="save()" slot = "end" expand="block" size="default">
+        <ion-icon name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Enter date:</ion-label>
+    <ion-datetime *ngIf="existingDSData != undefined" displayFormat="MM/DD/YYYY" placeholder="{{existingDSData.loggedAt | date: 'MM/dd/YYYY'}}" [(ngModel)]="date"></ion-datetime>
+    <ion-datetime *ngIf="existingDSData == undefined" displayFormat="MM/DD/YYYY" placeholder="MM/DD/YYYY" [(ngModel)]="date"></ion-datetime>
+
+    <ion-label position="floating">Enter time:</ion-label>
+    <ion-datetime *ngIf="existingDSData != undefined" displayFormat="h:mm a" placeholder="{{existingDSData.loggedAt | date: 'h:mm a'}}" [(ngModel)]="time"></ion-datetime>
+    <ion-datetime *ngIf="existingDSData == undefined" displayFormat="h:mm a" placeholder="12:00 am" [(ngModel)]="time"></ion-datetime>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class ="ion-align-self-center">
+        <ion-item class="ion-text-center"  lines="none">
+          <ion-label id="sleepNum" class="ion-align-self-center">{{sleepinessNum}}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-justify-content-center">
+        <ion-item class="ion-justify-content-center" lines="none">
+          <h6>{{sleepinessData[sleepinessNum]}}</h6>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-justify-content-center">
+        <ion-item class="ion-justify-content-center" lines="none">
+          <ion-range *ngIf="existingDSData != undefined"  value="{{existingDSData.loggedValue}}" [(ngModel)]="sleepinessNum" (ionChange)="updateVals()" min="1" max="7" step="1" snaps="true">
+            <ion-label slot="start">1</ion-label>
+            <ion-label slot="end">7</ion-label>
+          </ion-range>
+          <ion-range *ngIf="existingDSData == undefined" value="1" [(ngModel)]="sleepinessNum" (ionChange)="updateVals()" min="1" max="7" step="1" snaps="true">
+            <ion-label slot="start">1</ion-label>
+            <ion-label slot="end">7</ion-label>
+          </ion-range>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+
+  <ion-item>
+    <ion-textarea *ngIf="existingDSData != undefined" placeholder="Enter notes" [(ngModel)]="extraNotes"></ion-textarea>
+    <ion-textarea *ngIf="existingDSData == undefined" placeholder="Enter notes" [(ngModel)]="extraNotes"></ion-textarea>
+
+  </ion-item>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class ="ion-align-self-center">
+          <ion-button expand="block" size="default" (click)="cancel()">cancel</ion-button>
+      </ion-col>
+
+      <ion-col class ="ion-align-self-center">
+        <ion-button expand="block" size="default" color="danger" (click)="presentAlert()">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

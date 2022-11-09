@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button (click)='presentModal()' fill="solid" color="primary">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Overnight Sleep</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list >
+    <app-overnight-sleep-card *ngFor="let card_map of all_cards_map | keyvalue" [overnightData]='card_map.value' (click)='editCard(card_map.value)'></app-overnight-sleep-card>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center">
+          <ion-button item-start href="home">Back</ion-button>
+
+        </ion-col>
+        <ion-col class="ion-align-self-center">
+          <ion-button item-end color="danger" (click)='presentAlert()'>Delete all</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

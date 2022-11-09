@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-title slot="start">Enter Info</ion-title>
+      <ion-button (click)="save()" slot = "end" expand="block" size="default">
+        <ion-icon name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Start date:</ion-label>
+    <ion-datetime *ngIf="existingONSData != undefined" displayFormat="MM/DD/YYYY" [(ngModel)]="startDate" placeholder="{{existingONSData.sleepStart| date: 'MM/dd/YYYY'}}"></ion-datetime>
+    <ion-datetime *ngIf="existingONSData == undefined" displayFormat="MM/DD/YYYY" [(ngModel)]="startDate" placeholder="MM/DD/YYYY"></ion-datetime>
+
+    <ion-label position="floating">End date:</ion-label>
+    <ion-datetime *ngIf="existingONSData != undefined" displayFormat="MM/DD/YYYY" placeholder="{{existingONSData.sleepEnd | date: 'MM/dd/YYYY'}}" [(ngModel)]="endDate"></ion-datetime>
+    <ion-datetime *ngIf="existingONSData == undefined" displayFormat="MM/DD/YYYY" placeholder="MM/DD/YYYY" [(ngModel)]="endDate"></ion-datetime>
+    
+    <ion-label position="floating">Start time:</ion-label>
+    <ion-datetime *ngIf="existingONSData != undefined" displayFormat="h:mm a" placeholder="{{existingONSData.sleepStart | date: 'h:mm a'}}"[(ngModel)]="startTime"></ion-datetime>
+    <ion-datetime *ngIf="existingONSData == undefined" displayFormat="h:mm a" placeholder="12:00 am" [(ngModel)]="startTime"></ion-datetime>
+    
+    <ion-label position="floating">End time:</ion-label>
+    <ion-datetime *ngIf="existingONSData != undefined" displayFormat="h:mm a" placeholder="{{existingONSData.sleepEnd | date: 'h:mm a'}}"[(ngModel)]="endTime"></ion-datetime>
+    <ion-datetime *ngIf="existingONSData == undefined" displayFormat="h:mm a" placeholder="12:00 am" [(ngModel)]="endTime"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-textarea *ngIf="existingONSData != undefined" [(ngModel)]="extraNotes" placeholder = "Enter notes"></ion-textarea>
+    <ion-textarea *ngIf="existingONSData == undefined" placeholder="Enter notes" [(ngModel)]="extraNotes"></ion-textarea>
+  </ion-item>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class ="ion-align-self-center">
+          <ion-button expand="block" size="default" (click)="cancel()">cancel</ion-button>
+      </ion-col>
+
+      <ion-col class ="ion-align-self-center">
+        <ion-button expand="block" size="default" color="danger" (click)="presentAlert()">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
