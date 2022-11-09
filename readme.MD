@@ -1,3 +1,7 @@
+# To Run
+node_modules is required to run this! 
+To run this app, cd to the `sleeptracker` folder and run `ionic lab`. This will start the app at localhost:8200.
+
 
 # Features
 - The ability to log overnight sleep
