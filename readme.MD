@@ -49,7 +49,7 @@ and the tick marks are obvious.
 
 
 
-## Principles of good design?
+# Principles of good design?
 - The "+" (indicates create) and the save button are in a similar location, so the user doesn't have to go hunting for "affirmative" actions
 - When entering information, there is an option to cancel, if the user tapped the "+" by mistake
 - If the user decides to not enter in any information, default values (the current date and time) will be used
